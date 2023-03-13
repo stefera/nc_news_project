@@ -10,7 +10,7 @@ function ListOfArticles({ allArticles }) {
       <ul>
         {allArticles.map((article) => {
           return (
-            <li className="card" style="width: calc(20% - 10rem)">
+            <li className="card">
               <ArticleCard />
             </li>
           );
