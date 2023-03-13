@@ -1,24 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import React from "react";
+import FilterSortGroup from "./components/Home+Search/FilterSortGroup";
+import NavBar from "./components/Home+Search/NavBar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route
+        path={"/"}
+        element={
+          <div className="container">
+            <HeaderMain />
+            <NavBar />
+          </div>
+        }
+      />
+      <Route
+        path={"/articles/search*"}
+        element={
+          <div className="container">
+            <HeaderSmall />
+            <SearchPage />
+          </div>
+        }
+      />
+      <Route
+        path={"/articles/search*"}
+        element={
+          <div className="container">
+            <HeaderSmall />
+            <SearchGroup />
+            <ListOfArticles />
+            <FilterSortGroup />
+          </div>
+        }
+      />
+
+      <Route
+        path={"/articles/:article_id"}
+        element={
+          <div className="container">
+            <ArticleBody />
+            <ShareGroup />
+            <CommentSection />
+          </div>
+        }
+      />
+    </Routes>
   );
 }
 
