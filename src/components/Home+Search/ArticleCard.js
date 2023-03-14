@@ -14,9 +14,11 @@ function ArticleCard({ article }) {
         <h5 className="card-title"> {article.title}</h5>
         {/* <p className="card-text"> {article.body}</p> */}
 
-        <a href="#" className="btn btn-primary">
-          Read article
-        </a>
+        <Link to={`/articles/${article.article_id}`}>
+          <a href="#" className="btn btn-primary">
+            Read article
+          </a>
+        </Link>
       </div>
     </div>
   );
