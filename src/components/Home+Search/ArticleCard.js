@@ -13,7 +13,6 @@ function ArticleCard({ article }) {
       <div className="card-body">
         <h5 className="card-title"> {article.title}</h5>
         {/* <p className="card-text"> {article.body}</p> */}
-
         <a href="#" className="btn btn-primary">
           Read article
         </a>
