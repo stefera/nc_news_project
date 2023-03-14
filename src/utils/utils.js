@@ -5,10 +5,12 @@ const address = axios.create({
 });
 
 const fetchAllArticles = () => {
-  return address.get("/articles").then((data) => {
-    console.log(data);
-    return data;
-  });
+  return axios
+    .get("https://project-news2.onrender.com/api/articles")
+    .then(({ data }) => {
+      console.log(data.articles, "in utils");
+      return data.articles;
+    });
 };
 
-export default { fetchAllArticles };
+export default fetchAllArticles;

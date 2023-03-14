@@ -6,12 +6,12 @@ import ArticleCard from "./ArticleCard";
 function ListOfArticles({ allArticles }) {
   return (
     <div className="container">
-      <p>List of Articles</p>
-      <ul>
+      <h3 style={{ textAlign: "center" }}>All Articles</h3>
+      <ul style={{ listStyle: "none", display: "grid" }}>
         {allArticles.map((article) => {
           return (
-            <li className="card">
-              <ArticleCard />
+            <li className="col-3" key={article.article_id}>
+              <ArticleCard article={article} />
             </li>
           );
         })}

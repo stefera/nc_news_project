@@ -72,14 +72,15 @@ function App() {
     },
   ];
 
-  const [allArticles, setAllArticles] = useState([articleArray]);
+  const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
 
-  // useEffect(() => {
-  //   fetchAllArticles().then(({ data }) => {
-  //     setAllArticles(data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetchAllArticles().then((articles) => {
+      console.log(articles);
+      return setAllArticles(articles);
+    });
+  }, []);
 
   return (
     <Routes>
@@ -87,7 +88,9 @@ function App() {
         path={"/"}
         element={
           <div className="container">
-            <p className="h2">HOME PAGE</p>
+            <p className="h2" style={{ textAlign: "center" }}>
+              HOME PAGE
+            </p>
             <HeaderMain />
             <NavBar
               allArticles={allArticles}
