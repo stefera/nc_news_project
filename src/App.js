@@ -11,7 +11,7 @@ import ArticleBody from "./components/Article/ArticleBody";
 import ShareGroup from "./components/Article/ShareGroup";
 import CommentsSection from "./components/Article/CommentsSection";
 import MyProfile from "./components/Profile/MyProfile";
-import fetchAllArticles from "./utils/utils";
+import { fetchAllArticles } from "./utils/utils";
 
 function App() {
   const articleArray = [
@@ -85,7 +85,17 @@ function App() {
   return (
     <Routes>
       <Route
-        path={"/"}
+        path={"/articles/:article_id"}
+        element={
+          <div className="container">
+            <ArticleBody />
+            <ShareGroup />
+            <CommentsSection />
+          </div>
+        }
+      />
+      <Route
+        path={"/*"}
         element={
           <div className="container">
             <p className="h2" style={{ textAlign: "center" }}>
@@ -122,16 +132,6 @@ function App() {
         }
       />
 
-      <Route
-        path={"/articles/:article_id"}
-        element={
-          <div className="container">
-            <ArticleBody />
-            <ShareGroup />
-            <CommentsSection />
-          </div>
-        }
-      />
       <Route
         path={"/profile"}
         element={
