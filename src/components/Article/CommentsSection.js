@@ -1,8 +1,6 @@
 import "../../App.css";
-import { Routes, Route, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import {
-  fetchArticleByID,
   postCommentByArticle,
   fetchCommentsByArticle,
 } from "../../utils/utils";

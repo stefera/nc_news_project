@@ -1,7 +1,6 @@
 import "../../App.css";
-import { Routes, Route, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import React, { useState } from "react";
-import ArticleCard from "../Home+Search/ArticleCard";
 import { fetchArticleByID } from "../../utils/utils";
 import { useEffect } from "react";
 import ShareGroup from "./ShareGroup";
@@ -16,7 +15,7 @@ function ArticleBody() {
       console.log(selectedArticle);
       return setArticle(selectedArticle);
     });
-  }, []);
+  }, [article_id]);
   return (
     <div className="container" style={{ marginTop: 30 }}>
       <div className="row">

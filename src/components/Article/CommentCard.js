@@ -1,6 +1,5 @@
 import "../../App.css";
-import { Routes, Route, useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function CommentCard({ comment }) {
   // calculating the relative time of the comment (and corresponding message)
@@ -11,15 +10,15 @@ function CommentCard({ comment }) {
   const diffHours = Math.round(diffMs / 3600000); // 1 hour = 3600000 ms
 
   // output the relative time
-  function timeMessage() {
-    if (diffMins < 1) {
-      return `${diffMins} minutes ago`;
-    } else if (diffMins < 60) {
-      return `${diffHours} hours ago`;
-    }
-  }
-
-  /////
+  //
+  // function timeMessage() {
+  //   if (diffMins < 1) {
+  //     return `${diffMins} minutes ago`;
+  //   } else if (diffMins < 60) {
+  //     return `${diffHours} hours ago`;
+  //   }
+  // }
+  //
 
   return (
     <div
