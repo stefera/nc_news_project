@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import ArticleCard from "../Home+Search/ArticleCard";
 import { fetchArticleByID } from "../../utils/utils";
 import { useEffect } from "react";
+import ShareGroup from "./ShareGroup";
+import CommentsSection from "./CommentsSection";
 
 function ArticleBody() {
   const { article_id } = useParams();
@@ -26,14 +28,16 @@ function ArticleBody() {
           ></img>
         </div>
         <div className="col-7">
-          <p>
-            <h2>{article.title}</h2>
-          </p>
+          <h2>{article.title}</h2>
+
           <p>
             Written by: {article.author}{" "}
             {new Date(article.created_at).toLocaleDateString()}
           </p>
           <p> {article.body} </p>
+          <br></br>
+          <ShareGroup article={article} />
+          <CommentsSection articleID={article.article_id} />
         </div>
       </div>
     </div>

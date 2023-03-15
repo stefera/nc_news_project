@@ -77,7 +77,7 @@ function App() {
 
   useEffect(() => {
     fetchAllArticles().then((articles) => {
-      console.log(articles);
+      // console.log(articles);
       return setAllArticles(articles);
     });
   }, []);
@@ -89,8 +89,6 @@ function App() {
         element={
           <div className="container">
             <ArticleBody />
-            <ShareGroup />
-            <CommentsSection />
           </div>
         }
       />
