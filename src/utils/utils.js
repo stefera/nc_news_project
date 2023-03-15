@@ -22,4 +22,12 @@ const fetchArticleByID = (article_id) => {
   });
 };
 
-export { fetchAllArticles, fetchArticleByID };
+const fetchAllTopics = () => {
+  return address.get(`/topics`).then(({ data }) => {
+    console.log(data, "in utils");
+
+    return data;
+  });
+};
+
+export { fetchAllArticles, fetchArticleByID, fetchAllTopics };
