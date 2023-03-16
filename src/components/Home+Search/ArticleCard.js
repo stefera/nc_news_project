@@ -4,7 +4,7 @@ import React from "react";
 
 function ArticleCard({ article }) {
   return (
-    <div className="card" style={{ width: 400 }}>
+    <div className="card" style={{ margin: "15px" }}>
       <img
         src={article.article_img_url}
         className="card-img-top"
@@ -12,12 +12,16 @@ function ArticleCard({ article }) {
       ></img>
       <div className="card-body">
         <h5 className="card-title"> {article.title}</h5>
-        {/* <p className="card-text"> {article.body}</p> */}
+        <p
+          className="card-text"
+          style={{ color: "grey", marginBottom: "20px" }}
+        >
+          {" "}
+          by {article.author}
+        </p>
 
         <Link to={`/articles/${article.article_id}`}>
-          <a href="#" className="btn btn-primary">
-            Read article
-          </a>
+          <a className="btn btn-primary">Read article</a>
         </Link>
       </div>
     </div>

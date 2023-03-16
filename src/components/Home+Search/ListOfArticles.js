@@ -7,15 +7,21 @@ function ListOfArticles({ allArticles }) {
   return (
     <div className="container">
       <h3 style={{ textAlign: "center" }}>All Articles</h3>
-      <ul style={{ listStyle: "none", display: "grid" }}>
-        {allArticles.map((article) => {
+      <div className="row">
+        {/* <ul style={{ listStyle: "none" }}> */}
+        {allArticles.map((article, index) => {
           return (
-            <li className="col-3" key={article.article_id}>
+            <a
+              className="col-md-4 col-sm-6 col-xs-12"
+              key={index}
+              style={{ textDecoration: "none", color: "black" }}
+            >
               <ArticleCard article={article} />
-            </li>
+            </a>
           );
         })}
-      </ul>
+        {/* </ul> */}
+      </div>
     </div>
   );
 }

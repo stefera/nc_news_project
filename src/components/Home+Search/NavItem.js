@@ -47,7 +47,6 @@ function NavItem({
         to={filter.slug === navFilter ? `/articles?topic=${filter.slug}` : "/"}
       >
         <a
-          href="#"
           className={filter.slug === navFilter ? "nav-link active" : "nav-link"}
           onClick={resolveClick}
         >
