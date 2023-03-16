@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useSearchParams } from "react-router-dom";
 import { useState, useEffect, React } from "react";
 import FilterSortGroup from "./components/Home+Search/FilterSortGroup";
 import NavBar from "./components/Home+Search/NavBar";
@@ -16,14 +16,16 @@ import { fetchAllArticles } from "./utils/utils";
 function App() {
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
-  const [navFilter, setNavFilter] = useState("All");
+  const [navFilter, setNavFilter] = useState("");
+  const [sortParam, setSortParam] = useSearchParams("");
 
   useEffect(() => {
-    fetchAllArticles().then((articles) => {
+    console.log(navFilter, "filter applied");
+    fetchAllArticles(navFilter).then((articles) => {
       console.log(articles);
       return setAllArticles(articles);
     });
-  }, [navFilter]);
+  }, [sortParam, navFilter]);
 
   return (
     <Routes>
@@ -52,6 +54,8 @@ function App() {
               setIsLoading={setIsLoading}
               navFilter={navFilter}
               setNavFilter={setNavFilter}
+              sortParam={sortParam}
+              setSortParam={setSortParam}
             />
             <ListOfArticles
               allArticles={allArticles}

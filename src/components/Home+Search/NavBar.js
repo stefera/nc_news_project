@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { fetchAllTopics } from "../../utils/utils";
 import NavItem from "./NavItem";
 
-function NavBar({ navFilter, setNavFilter }) {
+function NavBar({ navFilter, setNavFilter, sortParam, setSortParam }) {
   const [allFilters, setAllFilters] = useState([]);
 
   useEffect(() => {
@@ -15,13 +15,15 @@ function NavBar({ navFilter, setNavFilter }) {
   }, []);
   return (
     <div className="container" style={{ maxWidth: "50%" }}>
-      <ul class="nav nav-pills nav-fill">
+      <ul className="nav nav-pills nav-fill">
         {allFilters.map((filter) => {
           return (
             <NavItem
               filter={filter}
               navFilter={navFilter}
               setNavFilter={setNavFilter}
+              sortParam={sortParam}
+              setSortParam={setSortParam}
             />
           );
         })}
