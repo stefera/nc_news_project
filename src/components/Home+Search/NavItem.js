@@ -1,7 +1,6 @@
 import "../../App.css";
 
-import React from // ,{ useState, useEffect }
-"react";
+import React from "react"; // ,{ useState, useEffect }
 
 function NavItem({ filter, topic, setTopic }) {
   console.log(filter, topic);
@@ -20,7 +19,7 @@ function NavItem({ filter, topic, setTopic }) {
 
   const resolveClick = (event) => {
     event.preventDefault();
-    console.log(event.target.innerText, topic);
+    // console.log(event.target.innerText, topic);
 
     if (event.target.innerText === topic) {
       setTopic("");

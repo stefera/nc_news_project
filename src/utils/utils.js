@@ -5,6 +5,7 @@ const address = axios.create({
 });
 
 const fetchAllArticles = (topic, sortParam, order) => {
+  console.log(topic, sortParam, order, "<<parameters");
   let base = "https://project-news2.onrender.com/api/articles";
   if (topic) {
     base += `?topic=${topic}`;
@@ -12,6 +13,7 @@ const fetchAllArticles = (topic, sortParam, order) => {
   if (sortParam) {
     if (topic) base += `&sortBy=${sortParam}`;
     else base += `?sortBy=${sortParam}`;
+    console.log(base, "<<base");
   }
   if (order) {
     base += `&order=${order}`;

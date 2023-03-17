@@ -1,11 +1,7 @@
 import "./App.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
-import {
-  Routes,
-  Route,
-  //  useSearchParams
-} from "react-router-dom";
+import { Routes, Route, useSearchParams } from "react-router-dom";
 import { useState, useEffect, React } from "react";
 import FilterSortGroup from "./components/Home+Search/FilterSortGroup";
 import NavBar from "./components/Home+Search/NavBar";
@@ -20,22 +16,30 @@ import { fetchAllArticles } from "./utils/utils";
 function App() {
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
-  // const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [topic, setTopic] = useState("");
   const [sortParam, setSortParam] = useState("");
   const [order, setOrder] = useState("");
+
+  console.log(searchParams);
+
+  useEffect(() => {
+    const filterByTopic = searchParams.get("topic");
+    console.log(filterByTopic);
+    const sortByQuery = searchParams.get("sortBy");
+    console.log(sortByQuery);
+    const order = searchParams.get("order");
+    console.log(order);
+    fetchAllArticles(filterByTopic, sortByQuery, order).then((articles) => {
+      // console.log(articles);
+      return setAllArticles(articles);
+    });
+  }, [topic, sortParam, order]);
 
   // useEffect(() => {
   //   const newParams = new URLSearchParams(searchParams);
   //   setSearchParams(newParams);
   // }, [topic, sortParam, order]);
-
-  useEffect(() => {
-    fetchAllArticles().then((articles) => {
-      // console.log(articles);
-      return setAllArticles(articles);
-    });
-  }, [topic, sortParam, order]);
 
   return (
     <Routes>
