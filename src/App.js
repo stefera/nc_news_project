@@ -29,6 +29,7 @@ function App() {
   // }, [topic, sortParam, order]);
 
   useEffect(() => {
+<<<<<<< HEAD
     fetchAllArticles().then(
       (articles) => {
         console.log(articles);
@@ -37,6 +38,13 @@ function App() {
       [searchParams]
     );
   });
+=======
+    fetchAllArticles().then((articles) => {
+      // console.log(articles);
+      return setAllArticles(articles);
+    });
+  }, []);
+>>>>>>> refs/remotes/origin/main
 
   return (
     <Routes>
@@ -45,8 +53,6 @@ function App() {
         element={
           <div className="container">
             <ArticleBody />
-            <ShareGroup />
-            <CommentsSection />
           </div>
         }
       />
