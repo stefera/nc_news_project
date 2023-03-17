@@ -62,10 +62,18 @@ const fetchCommentsByArticle = (article_id) => {
   });
 };
 
+const incrementVotes = (article_id, value) => {
+  const voteObj = { inc_votes: value };
+  return address.patch(`articles/${article_id}`, voteObj).then(({ data }) => {
+    return data;
+  });
+};
+
 export {
   fetchAllArticles,
   fetchAllTopics,
   fetchArticleByID,
   postCommentByArticle,
   fetchCommentsByArticle,
+  incrementVotes,
 };

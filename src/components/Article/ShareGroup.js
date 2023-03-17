@@ -3,10 +3,9 @@ import React from "react";
 
 function ShareGroup() {
   return (
-    <div className="row">
-      <div className="col-10">Want to share this article?</div>
-      <div className="col-2">
-        <button className="btn btn-tertiary">Copy Link</button>
+    <div className="col-md-4 col-xs-12">
+      <div>
+        <button className="btn btn-tertiary">Share Link</button>
       </div>
     </div>
   );
