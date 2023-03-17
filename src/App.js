@@ -29,22 +29,11 @@ function App() {
   // }, [topic, sortParam, order]);
 
   useEffect(() => {
-<<<<<<< HEAD
-    fetchAllArticles().then(
-      (articles) => {
-        console.log(articles);
-        return setAllArticles(articles);
-      },
-      [searchParams]
-    );
-  });
-=======
     fetchAllArticles().then((articles) => {
       // console.log(articles);
       return setAllArticles(articles);
     });
-  }, []);
->>>>>>> refs/remotes/origin/main
+  }, [topic, sortParam, order]);
 
   return (
     <Routes>
