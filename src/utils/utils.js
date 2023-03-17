@@ -4,22 +4,23 @@ const address = axios.create({
   baseURL: "https://project-news2.onrender.com/api",
 });
 
-const fetchAllArticles = (params) => {
-  if (!params) {
-    return axios
-      .get("https://project-news2.onrender.com/api/articles")
-      .then(({ data }) => {
-        // console.log(data.articles, "in utils");
-        return data.articles;
-      });
-  } else {
-    return axios
-      .get(`https://project-news2.onrender.com/api/articles?topic=${params}`)
-      .then(({ data }) => {
-        console.log(params);
-        return data.articles;
-      });
+const fetchAllArticles = (topic, sortParam, order) => {
+  let base = "https://project-news2.onrender.com/api/articles";
+  if (topic) {
+    base += `?topic=${topic}`;
   }
+  if (sortParam) {
+    if (topic) base += `&sortBy=${sortParam}`;
+    else base += `?sortBy=${sortParam}`;
+  }
+  if (order) {
+    base += `&order=${order}`;
+  }
+
+  return axios.get(base).then(({ data }) => {
+    // console.log(data.articles, "in utils");
+    return data.articles;
+  });
 };
 
 const fetchArticleByID = (article_id) => {

@@ -9,14 +9,8 @@ import {
 import React, { useState, useEffect } from "react";
 import { fetchAllTopics } from "../../utils/utils";
 
-function NavItem({
-  filter,
-  navFilter,
-  setNavFilter,
-  searchParams,
-  setSearchParams,
-}) {
-  console.log(filter, navFilter);
+function NavItem({ filter, topic, setTopic }) {
+  console.log(filter, topic);
   // console.log(searchParams, topic, filter.slug);
 
   // const resolveClick = (event) => {
@@ -32,27 +26,29 @@ function NavItem({
 
   const resolveClick = (event) => {
     event.preventDefault();
-    console.log(event.target.innerText, navFilter);
+    console.log(event.target.innerText, topic);
 
-    if (event.target.innerText === navFilter) {
-      setNavFilter("");
+    if (event.target.innerText === topic) {
+      setTopic("");
     } else {
-      setNavFilter(event.target.innerText);
+      setTopic(event.target.innerText);
     }
   };
   return (
     <li key={filter.id} className="nav-item">
-      <Link
+      {/* <Link
         style={{ textDecoration: "none" }}
-        to={filter.slug === navFilter ? `/articles?topic=${filter.slug}` : "/"}
+        to={filter.slug === topic ? `/articles?topic=${filter.slug}` : "/"}
+      > */}
+      <p
+        className={
+          filter.slug === topic ? "nav-link active" : "nav-link border"
+        }
+        onClick={resolveClick}
       >
-        <a
-          className={filter.slug === navFilter ? "nav-link active" : "nav-link"}
-          onClick={resolveClick}
-        >
-          {filter.slug}
-        </a>
-      </Link>
+        {filter.slug}
+      </p>
+      {/* </Link> */}
 
       {/* {topic !== filter.slug ? (
         

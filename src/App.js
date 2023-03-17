@@ -1,4 +1,6 @@
 import "./App.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+
 import { Routes, Route, useSearchParams } from "react-router-dom";
 import { useState, useEffect, React } from "react";
 import FilterSortGroup from "./components/Home+Search/FilterSortGroup";
@@ -16,16 +18,25 @@ import { fetchAllArticles } from "./utils/utils";
 function App() {
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
-  const [navFilter, setNavFilter] = useState("");
-  const [sortParam, setSortParam] = useSearchParams("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [topic, setTopic] = useState("");
+  const [sortParam, setSortParam] = useState("");
+  const [order, setOrder] = useState("");
+
+  // useEffect(() => {
+  //   const newParams = new URLSearchParams(searchParams);
+  //   setSearchParams(newParams);
+  // }, [topic, sortParam, order]);
 
   useEffect(() => {
-    console.log(navFilter, "filter applied");
-    fetchAllArticles(navFilter).then((articles) => {
-      console.log(articles);
-      return setAllArticles(articles);
-    });
-  }, [sortParam, navFilter]);
+    fetchAllArticles().then(
+      (articles) => {
+        console.log(articles);
+        return setAllArticles(articles);
+      },
+      [searchParams]
+    );
+  });
 
   return (
     <Routes>
@@ -44,7 +55,7 @@ function App() {
         element={
           <div className="container">
             <p className="h2" style={{ textAlign: "center" }}>
-              HOME PAGE
+              NC News
             </p>
             <HeaderMain />
             <NavBar
@@ -52,10 +63,12 @@ function App() {
               setAllArticles={setAllArticles}
               isLoading={isLoading}
               setIsLoading={setIsLoading}
-              navFilter={navFilter}
-              setNavFilter={setNavFilter}
+              topic={topic}
+              setTopic={setTopic}
               sortParam={sortParam}
               setSortParam={setSortParam}
+              order={order}
+              setOrder={setOrder}
             />
             <ListOfArticles
               allArticles={allArticles}
