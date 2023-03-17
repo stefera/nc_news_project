@@ -1,11 +1,11 @@
 import "../../App.css";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSearchParams } from "react-router-dom";
 
 function SortOrderGroup({
   // filter,
-  searchParams,
-  setSearchParams,
+
   // topic,
   // setTopic,
   sortParam,
@@ -13,24 +13,22 @@ function SortOrderGroup({
   // order,
   // setOrder,
 }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const acceptedSorts = [
     { date: "created_at" },
     { votes: "votes" },
     { comments: "comments" },
   ];
-  const acceptedOrders = ["desc", "asc"];
+  // const acceptedOrders = ["desc", "asc"];
 
-  // const resolveSortChange = (event) => {
-  //   event.preventDefault();
-  //   console.log(event, sortParam, "HERERE");
-  //   setSortParam(event.target);
-  // };
-
-  const setSortOrder = (direction) => {
+  const setSort = (query) => {
     // copy existing queries to avoid mutation
+    console.log(query);
     const newParams = new URLSearchParams(searchParams);
     // set the order query
-    newParams.set("order", direction);
+    newParams.set("sortBy", query);
+    setSortParam(query);
     setSearchParams(newParams);
   };
 
@@ -57,19 +55,17 @@ function SortOrderGroup({
             return (
               <li
                 onClick={() => {
-                  console.log(Object.values(sort)[0]);
-                  setSortParam(Object.values(sort)[0]);
+                  setSort(sort[Object.keys(sort)[0]]);
                 }}
               >
-                <a className="dropdown-item" href="#">
-                  {Object.values(sort)[0]}
-                </a>
+                <a className="dropdown-item">{Object.values(sort)[0]}</a>
               </li>
             );
           })}
         </ul>
       </div>
-      <div className="dropdown" id="sortby-dropdown">
+
+      {/* <div className="dropdown" id="sortby-dropdown">
         <button
           className={
             !sortParam
@@ -91,7 +87,7 @@ function SortOrderGroup({
               <li
                 onClick={() => {
                   console.log(order);
-                  setSortOrder(order);
+                  // setSortOrder(order);
                 }}
               >
                 <a className="dropdown-item" href="#">
@@ -102,6 +98,7 @@ function SortOrderGroup({
           })}
         </ul>
       </div>
+    */}
     </div>
   );
 }

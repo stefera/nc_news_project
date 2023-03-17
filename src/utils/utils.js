@@ -5,6 +5,7 @@ const address = axios.create({
 });
 
 const fetchAllArticles = (topic, sortParam, order) => {
+  console.log(topic, sortParam, order, "<<parameters");
   let base = "https://project-news2.onrender.com/api/articles";
   if (topic) {
     base += `?topic=${topic}`;
@@ -12,6 +13,7 @@ const fetchAllArticles = (topic, sortParam, order) => {
   if (sortParam) {
     if (topic) base += `&sortBy=${sortParam}`;
     else base += `?sortBy=${sortParam}`;
+    console.log(base, "<<base");
   }
   if (order) {
     base += `&order=${order}`;
@@ -60,10 +62,18 @@ const fetchCommentsByArticle = (article_id) => {
   });
 };
 
+const incrementVotes = (article_id, value) => {
+  const voteObj = { inc_votes: value };
+  return address.patch(`articles/${article_id}`, voteObj).then(({ data }) => {
+    return data;
+  });
+};
+
 export {
   fetchAllArticles,
   fetchAllTopics,
   fetchArticleByID,
   postCommentByArticle,
   fetchCommentsByArticle,
+  incrementVotes,
 };
