@@ -16,7 +16,7 @@ import { fetchAllArticles } from "./utils/utils";
 function App() {
   const [allArticles, setAllArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [topic, setTopic] = useState("");
   const [sortParam, setSortParam] = useState("");
   const [order, setOrder] = useState("");
@@ -34,7 +34,7 @@ function App() {
       // console.log(articles);
       return setAllArticles(articles);
     });
-  }, [topic, sortParam, order]);
+  }, [topic, sortParam, order, searchParams]);
 
   // useEffect(() => {
   //   const newParams = new URLSearchParams(searchParams);
