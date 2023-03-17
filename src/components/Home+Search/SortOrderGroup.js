@@ -1,6 +1,5 @@
 import "../../App.css";
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSearchParams } from "react-router-dom";
 
 function SortOrderGroup({
@@ -58,7 +57,7 @@ function SortOrderGroup({
                   setSort(sort[Object.keys(sort)[0]]);
                 }}
               >
-                <a className="dropdown-item">{Object.values(sort)[0]}</a>
+                <p className="dropdown-item">{Object.values(sort)[0]}</p>
               </li>
             );
           })}

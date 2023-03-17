@@ -10,14 +10,13 @@ function ListOfArticles({ allArticles }) {
         {/* <ul style={{ listStyle: "none" }}> */}
         {allArticles.map((article, index) => {
           return (
-            <a
+            <p
               className="col-md-4 col-sm-6 col-xs-12"
               key={index}
               style={{ textDecoration: "none", color: "black" }}
-              href="#"
             >
               <ArticleCard article={article} />
-            </a>
+            </p>
           );
         })}
         {/* </ul> */}
