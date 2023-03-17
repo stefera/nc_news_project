@@ -1,16 +1,17 @@
 import "../../App.css";
-import { useParams, useSearchParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function SortOrderGroup({
-  filter,
-  navFilter,
-  setNavFilter,
+  // filter,
+  searchParams,
+  setSearchParams,
+  // topic,
+  // setTopic,
   sortParam,
   setSortParam,
-  order,
-  setOrder,
+  // order,
+  // setOrder,
 }) {
   const acceptedSorts = [
     { date: "created_at" },
@@ -24,6 +25,15 @@ function SortOrderGroup({
   //   console.log(event, sortParam, "HERERE");
   //   setSortParam(event.target);
   // };
+
+  const setSortOrder = (direction) => {
+    // copy existing queries to avoid mutation
+    const newParams = new URLSearchParams(searchParams);
+    // set the order query
+    newParams.set("order", direction);
+    setSearchParams(newParams);
+  };
+
   return (
     <div>
       <label htmlFor="sortby-dropdown">Sort by:</label>
@@ -81,7 +91,7 @@ function SortOrderGroup({
               <li
                 onClick={() => {
                   console.log(order);
-                  setOrder(order);
+                  setSortOrder(order);
                 }}
               >
                 <a className="dropdown-item" href="#">

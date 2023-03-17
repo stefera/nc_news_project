@@ -1,13 +1,7 @@
 import "../../App.css";
-import {
-  Routes,
-  Route,
-  useParams,
-  Link,
-  useSearchParams,
-} from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import { fetchAllTopics } from "../../utils/utils";
+
+import React from // ,{ useState, useEffect }
+"react";
 
 function NavItem({ filter, topic, setTopic }) {
   console.log(filter, topic);

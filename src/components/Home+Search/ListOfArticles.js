@@ -1,5 +1,4 @@
 import "../../App.css";
-import { Routes, Route } from "react-router-dom";
 import React from "react";
 import ArticleCard from "./ArticleCard";
 
@@ -15,6 +14,7 @@ function ListOfArticles({ allArticles }) {
               className="col-md-4 col-sm-6 col-xs-12"
               key={index}
               style={{ textDecoration: "none", color: "black" }}
+              href="#"
             >
               <ArticleCard article={article} />
             </a>

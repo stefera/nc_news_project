@@ -1,5 +1,5 @@
 import "../../App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React from "react";
 
 function ArticleCard({ article }) {
@@ -21,7 +21,7 @@ function ArticleCard({ article }) {
         </p>
 
         <Link to={`/articles/${article.article_id}`}>
-          <a className="btn btn-primary">Read article</a>
+          <p className="btn btn-primary">Read article</p>
         </Link>
       </div>
     </div>
