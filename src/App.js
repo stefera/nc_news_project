@@ -54,29 +54,41 @@ function App() {
       <Route
         path={"/*"}
         element={
-          <div className="container">
-            <p className="h2" style={{ textAlign: "center" }}>
-              NC News
-            </p>
+          <div>
             <HeaderMain />
-            <NavBar
-              allArticles={allArticles}
-              setAllArticles={setAllArticles}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-              topic={topic}
-              setTopic={setTopic}
-              sortParam={sortParam}
-              setSortParam={setSortParam}
-              order={order}
-              setOrder={setOrder}
-            />
-            <ListOfArticles
-              allArticles={allArticles}
-              setAllArticles={setAllArticles}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-            />
+            <section
+              className="jumbotron text-center"
+              style={{ padding: "3rem" }}
+            >
+              <div className="container" style={{ justifyContent: "center" }}>
+                <h1 className="jumbotron-heading">NC News</h1>
+                <p class="lead text-muted">
+                  Welcome to my news page. Read, comment, like and share
+                  articles on my favourite topics.
+                </p>
+              </div>
+
+              <NavBar
+                allArticles={allArticles}
+                setAllArticles={setAllArticles}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+                topic={topic}
+                setTopic={setTopic}
+                sortParam={sortParam}
+                setSortParam={setSortParam}
+                order={order}
+                setOrder={setOrder}
+              />
+            </section>
+            <div className="album py-5 bg-light" style={{ width: "100%" }}>
+              <ListOfArticles
+                allArticles={allArticles}
+                setAllArticles={setAllArticles}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+              />
+            </div>
           </div>
         }
       />

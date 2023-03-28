@@ -16,7 +16,7 @@ function NavBar({ topic, setTopic, sortParam, setSortParam, order, setOrder }) {
   return (
     <div className="container" style={{ maxWidth: "50%" }}>
       <ul className="nav nav-pills nav-fill">
-        <p>Filter by topic:</p>
+        {/* <p>Filter by topic:</p> */}
         {allFilters.map((filter) => {
           return (
             <NavItem
@@ -29,8 +29,6 @@ function NavBar({ topic, setTopic, sortParam, setSortParam, order, setOrder }) {
           );
         })}
       </ul>
-
-      <p>Sort by:</p>
 
       <SortOrderGroup
         sortParam={sortParam}

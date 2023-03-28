@@ -4,7 +4,12 @@ import React from "react";
 
 function ArticleCard({ article }) {
   return (
-    <div className="card" style={{ margin: "15px" }}>
+    <div
+      className="card"
+      style={{
+        margin: "15px",
+      }}
+    >
       <img
         src={article.article_img_url}
         className="card-img-top"
