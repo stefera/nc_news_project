@@ -7,9 +7,9 @@ function HeaderMain() {
       </div>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
+          <section href="#" class="navbar-brand d-flex align-items-center">
             <strong>Sam Tefera</strong>
-          </a>
+          </section>
           {/* <button
             class="navbar-toggler"
             type="button"
