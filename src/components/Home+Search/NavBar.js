@@ -2,7 +2,7 @@ import "../../App.css";
 import React, { useState, useEffect } from "react";
 import { fetchAllTopics } from "../../utils/utils";
 import NavItem from "./NavItem";
-import SortOrderGroup from "./SortOrderGroup";
+// import SortOrderGroup from "./SortOrderGroup";
 
 function NavBar({ topic, setTopic, sortParam, setSortParam, order, setOrder }) {
   const [allFilters, setAllFilters] = useState([]);
@@ -16,7 +16,6 @@ function NavBar({ topic, setTopic, sortParam, setSortParam, order, setOrder }) {
   return (
     <div className="container" style={{ maxWidth: "50%" }}>
       <ul className="nav nav-pills nav-fill">
-        {/* <p>Filter by topic:</p> */}
         {allFilters.map((filter) => {
           return (
             <NavItem
@@ -30,12 +29,12 @@ function NavBar({ topic, setTopic, sortParam, setSortParam, order, setOrder }) {
         })}
       </ul>
 
-      <SortOrderGroup
+      {/* <SortOrderGroup
         sortParam={sortParam}
         setSortParam={setSortParam}
         order={order}
         setOrder={setOrder}
-      />
+      /> */}
     </div>
   );
 }

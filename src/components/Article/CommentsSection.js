@@ -1,52 +1,21 @@
 import "../../App.css";
-import React, { useEffect, useState } from "react";
-import {
-  postCommentByArticle,
-  fetchCommentsByArticle,
-} from "../../utils/utils";
+import React, { useState } from "react";
+import { postCommentByArticle } from "../../utils/utils";
 import CommentCard from "./CommentCard";
 
-function CommentsSection({ articleID, setArticle }) {
-  const [comments, setAllComments] = useState([]);
+function CommentsSection({ articleID, setArticle, comments, setAllComments }) {
   const [newComment, setNewComment] = useState("");
-
-  //const { article_id } = useParams;
-  // const [article, setArticle] = useState({});
-
-  useEffect(() => {
-    console.log(articleID);
-    fetchCommentsByArticle(articleID).then((returnedComments) => {
-      console.log(returnedComments, " returned Comments in CommentsSection");
-      return setAllComments(returnedComments);
-    });
-  }, [articleID]);
-
-  // useEffect(() => {
-  //   fetchArticleByID(articleID).then((selectedArticle) => {
-  //     console.log(selectedArticle);
-  //     return setArticle(selectedArticle);
-  //   });
-  // }, []);
-
-  // const handleChange = (event) => {
-  //   setNewComment(event.target.value);
-  //   console.log(newComment);
-  // };
-  // handled inline now
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
     postCommentByArticle(articleID, newComment)
       .then((postedComment) => {
-        //setAllComments([postedComment, ...comments]);
-        // setNewComment("");
+        console.log(`${postedComment} was successfully posted`);
       })
       .catch((err) => {
         console.log("there was an error posting this comment", err);
       });
-
-    // console.log(articleID, newComment, comments);
 
     setAllComments([
       { author: "grumpy19", body: newComment, created_at: new Date() },

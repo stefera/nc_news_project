@@ -2,12 +2,12 @@ import "../../App.css";
 function HeaderMain() {
   return (
     <header>
-      <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container"></div>
+      <div className="collapse bg-dark" id="navbarHeader">
+        <div className="container"></div>
       </div>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container d-flex justify-content-between">
-          <section href="#" class="navbar-brand d-flex align-items-center">
+      <div className="navbar navbar-dark bg-dark shadow-sm">
+        <div className="container d-flex justify-content-between">
+          <section href="#" className="navbar-brand d-flex align-items-center">
             <subtitle>built by Sam Tefera</subtitle>
           </section>
           {/* <button

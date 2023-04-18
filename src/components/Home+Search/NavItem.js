@@ -3,7 +3,9 @@ import "../../App.css";
 import React from "react"; // ,{ useState, useEffect }
 
 function NavItem({ filter, topic, setTopic }) {
-  console.log(filter, topic);
+  console.log(filter, "filter");
+  console.log(topic, "topic");
+
   // console.log(searchParams, topic, filter.slug);
 
   // const resolveClick = (event) => {
@@ -28,11 +30,11 @@ function NavItem({ filter, topic, setTopic }) {
     }
   };
   return (
-    <li key={filter.id} className="nav-item">
-      {/* <Link
-        style={{ textDecoration: "none" }}
-        to={filter.slug === topic ? `/articles?topic=${filter.slug}` : "/"}
-      > */}
+    <li
+      key={filter.id}
+      className="nav-item"
+      style={{ margin: 10, borderRadius: 50 }}
+    >
       <p
         className={
           filter.slug === topic ? "nav-link active" : "nav-link border"
@@ -41,27 +43,8 @@ function NavItem({ filter, topic, setTopic }) {
       >
         {filter.slug}
       </p>
-      {/* </Link> */}
-
-      {/* {topic !== filter.slug ? (
-        
-          <a href="#" className="nav-link">
-            {" "}
-            {filter.slug}{" "}
-          </a>
-        </Link>
-      ) : (
-        <Link to={"/"}>
-          <a className="nav-link active" href="#">
-            {" "}
-            {filter.slug}{" "}
-          </a>
-        </Link>
-      )} */}
     </li>
   );
 }
 
 export default NavItem;
-
-//to=`/articles?filter=${filter.slug}`
