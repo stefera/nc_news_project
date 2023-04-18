@@ -29,13 +29,6 @@ function ArticleBody() {
   return (
     <div className="container" style={{ marginTop: 30 }}>
       <div className="row">
-        <div className="col-5">
-          <img
-            src={article.article_img_url}
-            className="card-img-top"
-            alt="..."
-          ></img>
-        </div>
         <div className="col-7">
           <h2>{article.title}</h2>
           <p>
@@ -48,6 +41,13 @@ function ArticleBody() {
             article_id={article_id}
             comments={comments}
           />
+        </div>{" "}
+        <div className="col-5">
+          <img
+            src={article.article_img_url}
+            className="card-img-top"
+            alt="..."
+          ></img>
         </div>
         <div className="col-12">
           <br></br>
