@@ -3,10 +3,6 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 
 function SortOrderGroup({
-  // filter,
-
-  // topic,
-  // setTopic,
   sortParam,
   setSortParam,
   // order,

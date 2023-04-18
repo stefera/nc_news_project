@@ -1,6 +1,7 @@
 import "../../App.css";
 import { Link } from "react-router-dom";
 import React from "react";
+// import VoteArticle from "../Article/VoteArticle";
 
 function ArticleCard({ article }) {
   return (
@@ -24,7 +25,7 @@ function ArticleCard({ article }) {
           {" "}
           by {article.author}
         </p>
-
+        {/* <VoteArticle comment/> */}
         <Link to={`/articles/${article.article_id}`}>
           <p className="btn btn-primary">Read article</p>
         </Link>
