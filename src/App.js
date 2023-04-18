@@ -24,22 +24,10 @@ function App() {
   console.log(searchParams);
 
   useEffect(() => {
-    const filterByTopic = searchParams.get("topic");
-    console.log(filterByTopic);
-    const sortByQuery = searchParams.get("sortBy");
-    console.log(sortByQuery);
-    const order = searchParams.get("order");
-    console.log(order);
-    fetchAllArticles(filterByTopic, sortByQuery, order).then((articles) => {
-      // console.log(articles);
+    fetchAllArticles(topic).then((articles) => {
       return setAllArticles(articles);
     });
   }, [topic, sortParam, order, searchParams]);
-
-  // useEffect(() => {
-  //   const newParams = new URLSearchParams(searchParams);
-  //   setSearchParams(newParams);
-  // }, [topic, sortParam, order]);
 
   return (
     <Routes>
