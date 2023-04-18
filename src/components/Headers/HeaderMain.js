@@ -8,7 +8,7 @@ function HeaderMain() {
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
           <section href="#" class="navbar-brand d-flex align-items-center">
-            <strong>Sam Tefera</strong>
+            <subtitle>built by Sam Tefera</subtitle>
           </section>
           {/* <button
             class="navbar-toggler"
