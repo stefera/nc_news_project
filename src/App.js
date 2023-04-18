@@ -24,9 +24,14 @@ function App() {
   console.log(searchParams);
 
   useEffect(() => {
-    fetchAllArticles(topic).then((articles) => {
-      return setAllArticles(articles);
-    });
+    setIsLoading(true);
+    fetchAllArticles(topic)
+      .then((articles) => {
+        return setAllArticles(articles);
+      })
+      .then(() => {
+        setIsLoading(false);
+      });
   }, [topic, sortParam, order, searchParams]);
 
   return (
