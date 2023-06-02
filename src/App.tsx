@@ -2,7 +2,8 @@ import "./App.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import { Routes, Route, useSearchParams } from "react-router-dom";
-import { useState, useEffect, React } from "react";
+import { useState, useEffect} from "react";
+import React from "react";
 import FilterSortGroup from "./components/Home+Search/FilterSortGroup";
 import NavBar from "./components/Home+Search/NavBar";
 import HeaderMain from "./components/Headers/HeaderMain";
@@ -14,19 +15,27 @@ import MyProfile from "./components/Profile/MyProfile";
 import { fetchAllArticles } from "./utils/utils";
 
 function App() {
-  const [allArticles, setAllArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(null);
+
+  type Article = {
+    id: number;
+    title: string;
+    content: string;
+    // ...
+  };
+  
+  const [allArticles, setAllArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searchParams] = useSearchParams();
-  const [topic, setTopic] = useState("");
-  const [sortParam, setSortParam] = useState("");
-  const [order, setOrder] = useState("");
+  const [topic, setTopic] = useState<string>("");
+  const [sortParam, setSortParam] = useState<string>("");
+  const [order, setOrder] = useState<string>("");
 
   console.log(searchParams);
 
   useEffect(() => {
     setIsLoading(true);
-    fetchAllArticles(topic)
-      .then((articles) => {
+    fetchAllArticles(topic,"", "")
+      .then((articles:Article[]) => {
         return setAllArticles(articles);
       })
       .then(() => {
@@ -55,7 +64,7 @@ function App() {
             >
               <div className="container" style={{ justifyContent: "center" }}>
                 <h1 className="jumbotron-heading">NC News</h1>
-                <p class="lead text-muted">
+                <p className="lead text-muted">
                   Welcome to my news page. Read, comment, like and share
                   articles on my favourite topics.
                 </p>

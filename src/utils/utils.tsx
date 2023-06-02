@@ -4,7 +4,7 @@ const address = axios.create({
   baseURL: "https://project-news2.onrender.com/api",
 });
 
-const fetchAllArticles = (topic, sortParam, order) => {
+const fetchAllArticles = (topic:string, sortParam:string, order:string) => {
   console.log(topic, sortParam, order, "<<parameters");
   let base = "https://project-news2.onrender.com/api/articles";
   if (topic) {
@@ -25,7 +25,7 @@ const fetchAllArticles = (topic, sortParam, order) => {
   });
 };
 
-const fetchArticleByID = (article_id) => {
+const fetchArticleByID = (article_id:number) => {
   return address.get(`/articles/${article_id}`).then(({ data }) => {
     return data.article;
   });
@@ -37,7 +37,7 @@ const fetchAllTopics = () => {
   });
 };
 
-const postCommentByArticle = (article_id, commentBody) => {
+const postCommentByArticle = (article_id:number, commentBody:string) => {
   return address
     .post(`/articles/${article_id}/comments`, {
       body: commentBody,
@@ -48,13 +48,13 @@ const postCommentByArticle = (article_id, commentBody) => {
     });
 };
 
-const fetchCommentsByArticle = (article_id) => {
+const fetchCommentsByArticle = (article_id:number) => {
   return address.get(`/articles/${article_id}/comments`).then(({ data }) => {
     return data.comments;
   });
 };
 
-const incrementVotes = (article_id, value) => {
+const incrementVotes = (article_id:number, value:number) => {
   const voteObj = { inc_votes: value };
   return address.patch(`articles/${article_id}`, voteObj).then(({ data }) => {
     return data;

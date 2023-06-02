@@ -7,26 +7,38 @@ import { useEffect } from "react";
 import CommentsSection from "./CommentsSection";
 import VoteArticle from "./VoteArticle";
 import { fetchCommentsByArticle } from "../../utils/utils";
+import { Article } from "../../types/types";
 
 function ArticleBody() {
-  const { article_id } = useParams();
-  const [article, setArticle] = useState({});
-  const [comments, setAllComments] = useState([]);
+
+  const { article_id } = useParams<string>();
+  const [article, setArticle] = useState<Article | null>(null);
+  const [comments, setAllComments] = useState<string[]>([]);
 
   useEffect(() => {
-    fetchArticleByID(article_id).then((selectedArticle) => {
-      console.log(selectedArticle.article_id);
+    if(!article_id){
+      fetchArticleByID(1).then((selectedArticle) => {
+      setArticle(selectedArticle)})}
+    else{
+      fetchArticleByID(parseInt(article_id)).then((selectedArticle) => {
       setArticle(selectedArticle);
-    });
+    })};
   }, [article_id]);
 
   useEffect(() => {
-    fetchCommentsByArticle(article_id).then((returnedComments) => {
-      setAllComments(returnedComments);
-    });
+    if(!article_id){
+      fetchCommentsByArticle(1).then((returnedComments) => {
+        setAllComments(returnedComments);
+      });
+    }
+    else{
+      fetchCommentsByArticle(parseInt(article_id)).then((returnedComments) => {
+        setAllComments(returnedComments);
+      });
+    }
   }, [article_id]);
 
-  return (
+  return (article? 
     <div className="container" style={{ marginTop: 30 }}>
       <div className="row">
         <div className="col-7">
@@ -40,14 +52,14 @@ function ArticleBody() {
             article={article}
             article_id={article_id}
             comments={comments}
-          />
+            />
         </div>{" "}
         <div className="col-5">
           <img
             src={article.article_img_url}
             className="card-img-top"
             alt="..."
-          ></img>
+            ></img>
         </div>
         <div className="col-12">
           <br></br>
@@ -55,11 +67,12 @@ function ArticleBody() {
             articleID={article.article_id}
             comments={comments}
             setAllComments={setAllComments}
-          />
+            />
         </div>
       </div>
     </div>
-  );
+  :null
+  )
 }
 
 export default ArticleBody;

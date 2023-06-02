@@ -2,11 +2,13 @@ import "../../App.css";
 import React, { useState } from "react";
 import { postCommentByArticle } from "../../utils/utils";
 import CommentCard from "./CommentCard";
+import { Comment, ButtonClickHandler, FormSubmitHandler } from "../../types/types";
 
-function CommentsSection({ articleID, setArticle, comments, setAllComments }) {
+
+function CommentsSection( articleID:number, comments:Comment[], setAllComments:Function ) {
   const [newComment, setNewComment] = useState("");
 
-  const formSubmitHandler = (event) => {
+  const formSubmitHandler :FormSubmitHandler = (event) => {
     event.preventDefault();
 
     postCommentByArticle(articleID, newComment)
@@ -55,10 +57,10 @@ function CommentsSection({ articleID, setArticle, comments, setAllComments }) {
           </div>
         </form>
         <ul style={{ listStyle: "none" }}>
-          {comments.map((comment) => {
+          {comments.map((comment:Comment) => {
             return (
               <li key={comment.comment_id}>
-                <CommentCard comment={comment} comments={comments} />
+                <CommentCard comment={comment} />
               </li>
             );
           })}

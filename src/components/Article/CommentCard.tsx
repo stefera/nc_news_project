@@ -1,7 +1,9 @@
 import "../../App.css";
 import React from "react";
+import { Comment } from "../../types/types";
 
-function CommentCard({ comment }) {
+function CommentCard(comment: Comment) {
+  // const comment : Comment = props.comment
   // calculating the relative time of the comment (and corresponding message)
   const date = new Date(comment.created_at);
   const now = new Date();
